@@ -1,0 +1,105 @@
+{
+  "name": "peregrine-browser",
+  "version": "0.3.2",
+  "description": "游隼浏览器：独立环境、地区与虚拟定位、Clash 代理和可配置指纹",
+  "main": "src/main.js",
+  "private": true,
+  "author": "Peregrine Browser",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "test:browser": "node scripts/run-browser-test.js",
+    "core:download": "node scripts/download-core.js",
+    "fingerprint:download": "node scripts/download-fingerprint-core.js",
+    "icon:export": "electron scripts/export-icon.js",
+    "pack": "electron-builder --win nsis --x64",
+    "native:brand": "node scripts/prepare-native-brand.js",
+    "prestart": "node scripts/prepare-native-brand.js",
+    "pretest": "node scripts/prepare-native-brand.js",
+    "prepack": "node scripts/prepare-native-brand.js"
+  },
+  "dependencies": {
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3",
+    "pe-library": "0.4.1",
+    "resedit": "1.7.2"
+  },
+  "build": {
+    "appId": "local.peregrine.browser",
+    "productName": "游隼浏览器",
+    "directories": {
+      "output": "release"
+    },
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "src/**/*",
+      "ui/**/*",
+      "package.json",
+      "README.md",
+      "THIRD-PARTY-NOTICES.md",
+      "verification/native-core-limitations.md",
+      "verification/fingerprint-policy.md",
+      "LICENSE"
+    ],
+    "extraResources": [
+      {
+        "from": "vendor",
+        "to": "vendor",
+        "filter": [
+          "mihomo.exe",
+          "mihomo-LICENSE.txt",
+          "mihomo-source.json"
+        ]
+      },
+      {
+        "from": "vendor/peregrine-chromium/runtime",
+        "to": "vendor/fingerprint-chromium/runtime",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "vendor/fingerprint-chromium",
+        "to": "vendor/fingerprint-chromium",
+        "filter": [
+          "fingerprint-LICENSE.txt",
+          "fingerprint-source.json",
+          "chromium-LICENSE.txt",
+          "chromium-licenses.html"
+        ]
+      },
+      {
+        "from": "scripts/native-brand-window.ps1",
+        "to": "native-brand-window.ps1"
+      },
+      {
+        "from": "ui/assets/peregrine.ico",
+        "to": "peregrine.ico"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "ui/assets/peregrine.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "游隼浏览器",
+      "uninstallDisplayName": "游隼浏览器",
+      "installerIcon": "ui/assets/peregrine.ico",
+      "uninstallerIcon": "ui/assets/peregrine.ico",
+      "installerLanguages": [
+        "zh_CN"
+      ],
+      "language": "2052",
+      "artifactName": "游隼浏览器-Setup-${version}.exe"
+    },
+    "executableName": "PeregrineBrowser"
+  },
+  "license": "MIT"
+}

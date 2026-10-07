@@ -1,0 +1,11 @@
+'use strict';
+const { spawn, execFile } = require('node:child_process');
+const path = require('node:path');
+const env = { ...process.env };
+delete env.ELECTRON_RUN_AS_NODE;
+delete env.NODE_PATH;
+const packagedBinary = process.argv[2];
+const child = spawn(packagedBinary || require('electron'), packagedBinary ? ['--self-test'] : ['.', '--self-test'], { cwd: packagedBinary ? path.dirname(packagedBinary) : path.join(__dirname, '..'), env, stdio: 'inherit', windowsHide: true });
+const deadline = setTimeout(() => { console.error('Browser integration test timed out.'); if (process.platform === 'win32') execFile('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true }, () => {}); else child.kill(); process.exitCode = 1; }, 180000);
+child.on('error', error => { clearTimeout(deadline); console.error(error.message); process.exitCode = 1; });
+child.on('exit', code => { clearTimeout(deadline); process.exitCode = process.exitCode || (code === null ? 1 : code); });

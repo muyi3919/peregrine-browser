@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>新标签页 · 游隼浏览器</title>
+  <link rel="stylesheet" href="home.css">
+  <script src="home.js" defer></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="search-icon" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="plus-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="close-icon" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="edit-icon" viewBox="0 0 24 24"><path d="m15 4 5 5M4 20l5-1L20 8a3 3 0 0 0-4-4L5 15Z"/></symbol>
+    <symbol id="pin-icon" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  </svg>
+  <header class="page-header">
+    <div class="brand"><img src="assets/peregrine-icon.png" alt=""><span>游隼浏览器<small>PEREGRINE BROWSER</small></span></div>
+    <div class="environment" id="environment-info" hidden><span class="environment-dot"></span><span id="environment-name"></span><span class="environment-divider" id="environment-divider" hidden>·</span><span id="environment-region"></span></div>
+    <div class="header-label">NEW TAB</div>
+  </header>
+  <main>
+    <section class="welcome" aria-label="搜索与导航">
+      <div class="clock-line"><time id="home-clock">—</time><span></span><time id="home-date">—</time></div>
+      <img class="hero-logo" src="assets/peregrine-icon.png" alt="游隼">
+      <h1>下一站，随你出发。</h1>
+      <p class="welcome-note">一个新的标签页，一段新的探索。</p>
+      <form id="search-form" class="search-form" role="search">
+        <svg class="icon search-icon"><use href="#search-icon"/></svg>
+        <input id="search-input" type="text" placeholder="搜索关键词，或输入网址" autocomplete="off" spellcheck="false" aria-label="搜索关键词或输入网址" autofocus>
+        <div class="engine-select"><select id="search-engine" aria-label="选择搜索引擎"><option value="bing">必应</option><option value="google">Google</option><option value="duckduckgo">DuckDuckGo</option><option value="baidu">百度</option></select></div>
+        <button class="search-submit" type="submit" aria-label="开始搜索或打开网址"><svg class="icon"><use href="#arrow-icon"/></svg></button>
+      </form>
+      <div class="search-caption"><span>输入网址直达，输入关键词搜索</span><span><kbd>Enter</kbd> 开始探索</span></div>
+      <p id="search-error" class="inline-error" role="alert" hidden></p>
+    </section>
+    <section class="shortcuts-section" aria-label="常用网站">
+      <div class="section-header"><h2>常用网站</h2><div><button id="edit-shortcuts" class="quiet-button" type="button"><svg class="icon"><use href="#edit-icon"/></svg><span>整理</span></button><button id="add-shortcut" class="quiet-button" type="button"><svg class="icon"><use href="#plus-icon"/></svg>添加网站</button></div></div>
+      <div id="shortcut-grid" class="shortcut-grid"></div>
+      <div id="shortcut-empty" class="shortcut-empty" hidden><p>把经常访问的网站，放在触手可及的地方。</p><button id="restore-shortcuts" class="quiet-button" type="button">使用默认网站</button></div>
+    </section>
+  </main>
+  <footer><span>自由浏览，自在抵达。</span><span id="timezone-label"></span></footer>
+  <dialog id="shortcut-dialog"><form id="shortcut-form"><div class="dialog-heading"><div><span class="eyebrow">YOUR FAVORITES</span><h2>添加常用网站</h2></div><button id="close-shortcut-dialog" class="close-button" type="button" aria-label="关闭添加网站"><svg class="icon"><use href="#close-icon"/></svg></button></div><label>网站名称<input id="shortcut-name" type="text" required maxlength="32" placeholder="例如：我的工作台" autocomplete="off"></label><label>网站地址<input id="shortcut-url" type="text" required maxlength="2000" placeholder="https://example.com" autocomplete="off" spellcheck="false"></label><p class="dialog-hint">支持 HTTP / HTTPS 地址，也可直接填写域名。</p><p id="shortcut-error" class="inline-error" role="alert" hidden></p><div class="dialog-actions"><button id="cancel-shortcut" class="secondary-button" type="button">取消</button><button class="primary-button" type="submit">添加网站<svg class="icon"><use href="#plus-icon"/></svg></button></div></form></dialog>
+  <div id="home-toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

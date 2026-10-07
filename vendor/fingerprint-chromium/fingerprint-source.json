@@ -1,0 +1,19 @@
+{
+  "project": "https://github.com/adryfish/fingerprint-chromium",
+  "version": "150.0.7871.186",
+  "assetUrl": "https://github.com/adryfish/fingerprint-chromium/releases/download/150.0.7871.186/ungoogled-chromium_150.0.7871.186-1.1_windows_x64.zip",
+  "archiveSha256": "4d549c326e51ebbabf562fd365eb5380d9d4a81200da2c60f075c688d9a77e03",
+  "officialDigest": "sha256:4d549c326e51ebbabf562fd365eb5380d9d4a81200da2c60f075c688d9a77e03",
+  "binaryPath": "runtime/ungoogled-chromium_150.0.7871.186-1.1_windows_x64/chrome.exe",
+  "binarySha256": "65d0807599b5430ffbd9dffb60cd020464815f10557352959e3aa4c125a5c439",
+  "license": "BSD-3-Clause",
+  "licenseFile": "fingerprint-LICENSE.txt",
+  "sourceUrl": "https://github.com/adryfish/fingerprint-chromium/tree/150.0.7871.186",
+  "sourceAvailability": "The upstream README states Chromium 150 patches are delayed until Chromium 151; this link is not a claim that complete version 150 patches are available.",
+  "releasePatchSourceStatus": "upstream delayed until next major",
+  "chromiumLicenseFile": "chromium-LICENSE.txt",
+  "chromiumLicenseUrl": "https://raw.githubusercontent.com/chromium/chromium/150.0.7871.186/LICENSE",
+  "thirdPartyLicensesFile": "chromium-licenses.html",
+  "thirdPartyLicensesOrigin": "chrome://credits",
+  "retrievedAt": "2026-10-06T00:20:57.653Z"
+}
