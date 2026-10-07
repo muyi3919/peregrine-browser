@@ -4,6 +4,8 @@ Windows x64 桌面浏览器，支持 Clash 节点订阅、多环境独立代理�
 
 ## 安装与使用
 
+直接使用请前往 [GitHub Releases](https://github.com/muyi3919/peregrine-browser/releases) 下载 Windows x64 安装包；从源码构建请阅读 [Windows 打包指南](BUILD.md)。
+
 1. 双击 `release\游隼浏览器-Setup-0.3.2.exe`，选择安装位置。无需另外安装 Node.js、Electron、Chromium 或 Mihomo。
 2. 从「游隼浏览器」桌面快捷方式启动，在「节点订阅」导入 Clash 订阅链接或本地 YAML。
 3. 创建环境：第一步选择浏览器内核、填写 UA、设置指纹种子与地区，再选择代理节点。种子留空时自动生成，保存后保留；复制环境生成新种子，不复制登录数据。
